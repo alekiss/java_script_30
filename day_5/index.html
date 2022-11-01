@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        html{
+            box-sizing: border-box;
+            background: #ffc600;
+            font-family: "Helvetica Neue";
+            font-size: 20px;
+            font-weight: 200;
+        }
+
+        body{
+            margin: 0;
+        }
+
+        *, *:before, *:after{
+            box-sizing: inherit;
+        }
+
+        .panels{
+            min-height: 100vh;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .panel{
+            background: #6B0F9C;
+            box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.1);
+            color: white;
+            text-align: center;
+            align-items: center;
+            transition: 
+                font-size 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11),
+                flex 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11),
+                background 0.2s;
+            font-size: 20px;
+            background-size: cover;
+            background-position: center;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+        }
+
+        .panel1{
+            background-image: url(https://img.freepik.com/fotos-gratis/homem-tiro-medio-usando-oculos-vr_23-2149126949.jpg?w=900&t=st=1666667289~exp=1666667889~hmac=fe8c49ede084b4889ddeced2dbd683cef6ed0c492defc2b24eeb36c1efdd59c4);
+        }
+
+        .panel2{
+            background-image: url(https://img.freepik.com/fotos-gratis/foto-de-grande-angular-de-uma-unica-arvore-crescendo-sob-um-ceu-nublado-durante-um-por-do-sol-cercado-por-grama_181624-22807.jpg?w=740&t=st=1666667308~exp=1666667908~hmac=8254983b40fb6a824ee53bc4cbf6cb57d74cb1f0f6a08a66089b733b2affdd99);
+        }
+
+        .panel3{
+            background-image: url(https://img.freepik.com/fotos-gratis/lindo-retrato-de-cachorro_23-2149218452.jpg?w=900&t=st=1666667316~exp=1666667916~hmac=c6bdc5a8cd130bc6eebd9d406149d115acc9bcc04fc331ed5b7d958a29f0711c);
+        }
+
+        .panel4{
+            background-image: url(https://img.freepik.com/fotos-gratis/fundo-de-folhas-verdes-tropicais_53876-88891.jpg?w=740&t=st=1666667354~exp=1666667954~hmac=64942ae8316a1a7d275fc36209ab0df3c69cf4e1fe7320904e9421b955024132);
+        }
+
+        .panel5{
+            background-image: url(https://img.freepik.com/fotos-premium/plano-de-fundo-desfoque-desfocado-bokeh-engarrafamentos-reparos-em-estradas-ou-acidentes-luzes-de-freio-vermelhas-de-carros-parados_102577-109.jpg?w=740);
+        }
+
+        .panel > * {
+            margin: 0;
+            width: 100%;
+            transition: transform 0.5s;
+            flex: 1 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .panel > *:first-child {
+            transform: translateY(-100%)
+        }
+
+        .panel.open-active > *:first-child {
+            transform: translateY(0)
+        }
+
+        .panel > *:last-child {
+            transform: translateY(100%)
+        }
+
+        .panel.open-active > *:last-child {
+            transform: translateY(0)
+        }
+
+        .panel p {
+            text-transform: uppercase;
+            font-family: 'Amatic SC', cursive;
+            text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
+            font-size: 25px;
+        }
+
+        .panel p:nth-child(2) {
+            font-size: 4em;
+        }
+
+        .panel.open{
+            flex: 5;
+            font-size: 40px;
+        }
+
+        .cta{
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+
+    <div class="panels">
+        <div class="panel panel1">
+            <p>Hey</p>
+            <p>Let's</p>
+            <p>Dance</p>
+        </div>
+        <div class="panel panel2">
+            <p>Give</p>
+            <p>Take</p>
+            <p>Receive</p>
+        </div>
+        <div class="panel panel3">
+            <p>Experience</p>
+            <p>It</p>
+            <p>Today</p>
+        </div>
+        <div class="panel panel4">
+            <p>Give</p>
+            <p>All</p>
+            <p>You Can</p>
+        </div>
+        <div class="panel panel5">
+            <p>Life</p>
+            <p>In</p>
+            <p>Motion</p>
+        </div>
+    </div>
+    <script>
+        const panel = document.querySelectorAll('.panel')
+
+        function toggleOpen() {
+            this.classList.toggle('open')
+        }
+
+        function toggleActive(e) {
+            if(e.propertyName.includes('flex')){
+                this.classList.toggle('open-active')
+            }
+        }
+
+        panel.forEach(e => e.addEventListener('click', toggleOpen))
+        panel.forEach(e => e.addEventListener('transitionend', toggleActive))
+    </script>
+</body>
+</html>
